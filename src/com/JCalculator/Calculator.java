@@ -14,56 +14,61 @@ public class Calculator {
         int j;
         String [] result=example.split("[+-/*]");
         String resultation="";
-        ArrayList<String> list=new ArrayList<String>();
-        ArrayList<String> list2=new ArrayList<String>();
+        ArrayList<String> listOperations=new ArrayList<String>();
+        ArrayList<String> listNumbers=new ArrayList<String>();
         for (int i = 0; i < result.length; i++) {
-            list2.add(result[i]);
+            listNumbers.add(result[i]);
         }
 
         Calculate calculate=new Calculate();
         for (int i = 0; i <example.length() ; i++) {
             if(example.charAt(i)=='+' || example.charAt(i)=='-' || example.charAt(i)=='*' || example.charAt(i)=='/')
-                list.add(Character.toString(example.charAt(i)));
+                listOperations.add(Character.toString(example.charAt(i)));
         }
 
-        for (int i = 0; i <list.size() ; ) {
-            if (list.get(i).equals("/") || list.get(i).equals("*")) {
-                if (list.get(i).equals("/")) {
-                    resultation = Double.toString(calculate.division(Double.parseDouble(list2.get(i)), Double.parseDouble(list2.get(i + 1))));
-                    list2.set(i, resultation);
-                    list2.remove(i + 1);
-                    list.remove(i);
+        for (int i = 0; i <listOperations.size() ; ) {
+            if (listOperations.get(i).equals("/") || listOperations.get(i).equals("*")) {
+                if (listOperations.get(i).equals("/")) {
+                    if (listNumbers.get(i + 1).equals("0")) {
+                        System.out.println("Error division by zero");
+                       System.exit(0);
+                    }
+                    resultation = Double.toString(calculate.division(Double.parseDouble(listNumbers.get(i)), Double.parseDouble(listNumbers.get(i + 1))));
+                    listNumbers.set(i, resultation);
+                    listNumbers.remove(i + 1);
+                    listOperations.remove(i);
                 } else
-                if (list.get(i).equals("*")) {
-                    resultation = Double.toString(calculate.multiplication(Double.parseDouble(list2.get(i)), Double.parseDouble(list2.get(i + 1))));
-                    list2.set(i, resultation);
-                    list2.remove(i + 1);
-                    list.remove(i);
+                if (listOperations.get(i).equals("*")) {
+                    resultation = Double.toString(calculate.multiplication(Double.parseDouble(listNumbers.get(i)), Double.parseDouble(listNumbers.get(i + 1))));
+                    listNumbers.set(i, resultation);
+                    listNumbers.remove(i + 1);
+                    listOperations.remove(i);
                 }
             } else i++;
         }
 
-        for (int i = 0; i <list.size() ; ) {
-            if (list.get(i).equals("+") || list.get(i).equals("-")) {
-                if (list.get(i).equals("-")) {
-                    resultation = Double.toString(calculate.subtraction(Double.parseDouble(list2.get(i)), Double.parseDouble(list2.get(i + 1))));
-                    list2.set(i, resultation);
-                    list2.remove(i + 1);
-                    list.remove(i);
+        for (int i = 0; i <listOperations.size() ; ) {
+
+            if (listOperations.get(i).equals("+") || listOperations.get(i).equals("-")) {
+                if (listOperations.get(i).equals("-")) {
+                    resultation = Double.toString(calculate.subtraction(Double.parseDouble(listNumbers.get(i)), Double.parseDouble(listNumbers.get(i + 1))));
+                    listNumbers.set(i, resultation);
+                    listNumbers.remove(i + 1);
+                    listOperations.remove(i);
                 }
                 else
-                if (list.get(i).equals("+")) {
-                    resultation = Double.toString(calculate.addition(Double.parseDouble(list2.get(i)), Double.parseDouble(list2.get(i + 1))));
-                    list2.set(i, resultation);
-                    list2.remove(i + 1);
-                    list.remove(i);
+                if (listOperations.get(i).equals("+")) {
+                    resultation = Double.toString(calculate.addition(Double.parseDouble(listNumbers.get(i)), Double.parseDouble(listNumbers.get(i + 1))));
+                    listNumbers.set(i, resultation);
+                    listNumbers.remove(i + 1);
+                    listOperations.remove(i);
                 }
             } else i++;
         }
 
 
 
-        System.out.println("Resultat: "+list2);
+        System.out.println("Resultat: "+listNumbers);
 
     }
 }
