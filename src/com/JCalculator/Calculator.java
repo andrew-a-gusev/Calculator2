@@ -10,17 +10,26 @@ public class Calculator {
          try {
              BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
              System.out.println("Enter example ");
-             String example = reader.readLine();
-             int j;
-             String[] result = example.split("[+-/*]");
+
+             String example=reader.readLine();;
              String resultation = "";
-             ArrayList<String> listOperations = new ArrayList<String>();
-             ArrayList<String> listNumbers = new ArrayList<String>();
+
+
+             Calculate calculate = new Calculate();
+             while (!example.equals("exit"))  {
+
+
+                 resultation+=example;
+                 example=resultation;
+                 String[] result = example.split("(-|\\+|\\*|\\/)");
+
+                 ArrayList<String> listOperations = new ArrayList<String>();
+                 ArrayList<String> listNumbers = new ArrayList<String>();
              for (int i = 0; i < result.length; i++) {
                  listNumbers.add(result[i]);
              }
 
-             Calculate calculate = new Calculate();
+
              for (int i = 0; i < example.length(); i++) {
                  if (example.charAt(i) == '+' || example.charAt(i) == '-' || example.charAt(i) == '*' || example.charAt(i) == '/')
                      listOperations.add(Character.toString(example.charAt(i)));
@@ -62,8 +71,11 @@ public class Calculator {
                      }
                  } else i++;
              }
-             System.out.println("Resultat: "+listNumbers);
+
+             System.out.println("Resultat: "+listNumbers.get(0));
+                 example= reader.readLine();
          }
+    }
          catch (NumberFormatException e)   {
              System.out.println("Error data entry ");
          }
