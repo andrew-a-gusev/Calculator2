@@ -17,8 +17,6 @@ public class Calculator {
 
              Calculate calculate = new Calculate();
              while (!example.equals("exit"))  {
-
-
                  resultation+=example;
                  example=resultation;
                  String[] result = example.split("(-|\\+|\\*|\\/)");
@@ -38,10 +36,6 @@ public class Calculator {
              for (int i = 0; i < listOperations.size(); ) {
                  if (listOperations.get(i).equals("/") || listOperations.get(i).equals("*")) {
                      if (listOperations.get(i).equals("/")) {
-                         if (listNumbers.get(i + 1).equals("0")) {
-                             System.out.println("Error division by zero");
-                             System.exit(0);
-                         }
                          resultation = Double.toString(calculate.division(Double.parseDouble(listNumbers.get(i)), Double.parseDouble(listNumbers.get(i + 1))));
                          listNumbers.set(i, resultation);
                          listNumbers.remove(i + 1);
@@ -77,10 +71,13 @@ public class Calculator {
          }
     }
          catch (NumberFormatException e)   {
-             System.out.println("Error data entry ");
+             System.out.println("Error: data entry ");
          }
          catch (IndexOutOfBoundsException e)  {
-             System.out.println("Error data entry ");
+             System.out.println("Error: data entry ");
+         }
+         catch (ArithmeticException e)  {
+             System.out.println("Error: Divide by zero");
          }
 
 

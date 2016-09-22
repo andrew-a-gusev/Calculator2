@@ -1,10 +1,6 @@
 package com.JCalculator;
 
 public class Calculate implements MathematicalOperations {
-
-
-
-
     @Override
     public double addition(double firstNumb, double secondNumb) {
         return (firstNumb+secondNumb);
@@ -22,6 +18,7 @@ public class Calculate implements MathematicalOperations {
 
     @Override
     public double division(double firstNumb, double secondNumb) {
+        if(secondNumb==0) throw new ArithmeticException();
         return (firstNumb/secondNumb);
     }
 }
