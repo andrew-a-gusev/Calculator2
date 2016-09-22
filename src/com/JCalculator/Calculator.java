@@ -14,31 +14,37 @@ public class Calculator {
             String sign = reader.readLine();
             System.out.print("Enter the second number:");
             double secondNumber = Double.parseDouble(reader.readLine());
+            Calculate calculate=new Calculate();
 
 
             switch (sign) {
                 case "+":
-                    System.out.println("Result: " + (firstNumber + secondNumber));
+                    System.out.println("Result: " + calculate.addition(firstNumber,secondNumber));
                     break;
                 case "-":
-                    System.out.println("Result: " + (firstNumber - secondNumber));
+                    System.out.println("Result: " + calculate.subtraction(firstNumber,secondNumber));
                     break;
                 case "*":
-                    System.out.println("Result: " + (firstNumber * secondNumber));
+                    System.out.println("Result: " + calculate.multiplication(firstNumber,secondNumber));
                     break;
                 case "/":
-                    if (secondNumber == 0) System.out.println("Division by zero");
-                    System.out.println("Result: " + (firstNumber / secondNumber));
+                    if (secondNumber == 0){
+                        System.out.println("Division by zero");
+                        break;
+                    }
+                    System.out.println("Result: " + calculate.division(firstNumber,secondNumber));
                     break;
                 default:
                     System.out.println("Error operation");
                     break;
+
 
             }
 
 
         } catch (NumberFormatException e) {
             System.out.println("Error : enter the number");
+
         }
 
 
