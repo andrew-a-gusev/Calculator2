@@ -64,8 +64,10 @@ public class Calculator {
              }
              System.out.println("Resultat: "+listNumbers);
          }
-         catch (NumberFormatException e)
-         {
+         catch (NumberFormatException e)   {
+             System.out.println("Error data entry ");
+         }
+         catch (IndexOutOfBoundsException e)  {
              System.out.println("Error data entry ");
          }
 
