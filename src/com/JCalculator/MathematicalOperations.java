@@ -1,8 +1,8 @@
 package com.JCalculator;
 
 public interface MathematicalOperations {
-    double addition(double firstNumb,double secondNumb);
-    double subtraction(double firstNumb,double secondNumb);
-    double multiplication(double firstNumb,double secondNumb);
-    double division(double firstNumb,double secondNumb);
+    String addition(String resultation,double firstNumb,double secondNumb);
+    String subtraction(String resultation,double firstNumb,double secondNumb);
+    String multiplication(String resultation,double firstNumb,double secondNumb);
+    String division(String resultation,double firstNumb,double secondNumb);
 }

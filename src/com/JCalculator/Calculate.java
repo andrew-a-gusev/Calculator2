@@ -1,24 +1,43 @@
 package com.JCalculator;
 
-public class Calculate implements MathematicalOperations {
-    @Override
-    public double addition(double firstNumb, double secondNumb) {
-        return (firstNumb+secondNumb);
-    }
+import static com.JCalculator.Calculator.listOperations;
+import static com.JCalculator.Calculator.listNumbers;
 
-    @Override
-    public double subtraction(double firstNumb, double secondNumb) {
-        return (firstNumb-secondNumb);
-    }
+public class Calculate extends MathFormula {
 
-    @Override
-    public double multiplication(double firstNumb, double secondNumb) {
-        return (firstNumb*secondNumb);
-    }
+    public  void result(String resultation)    {
+        for (int i = 0; i < listOperations.size(); ) {
+            if (listOperations.get(i).equals("*")) {
+                resultation = multiplication(resultation,Double.parseDouble(listNumbers.get(i)), Double.parseDouble(listNumbers.get(i + 1)));
+                listNumbers.set(i, resultation);
+                listNumbers.remove(i + 1);
+                listOperations.remove(i);
+            }
+                else
+            if (listOperations.get(i).equals("/")) {
+                resultation = division(resultation,Double.parseDouble(listNumbers.get(i)) ,Double.parseDouble(listNumbers.get(i + 1)));
+                listNumbers.set(i, resultation);
+                listNumbers.remove(i + 1);
+                listOperations.remove(i);
+            }
+            else i++;
+        }
+            for (int i = 0; i < listOperations.size(); ) {
+                if (listOperations.get(i).equals("+")) {
+                    resultation = addition(resultation, Double.parseDouble(listNumbers.get(i)), Double.parseDouble(listNumbers.get(i + 1)));
+                    listNumbers.set(i, resultation);
+                    listNumbers.remove(i + 1);
+                    listOperations.remove(i);
 
-    @Override
-    public double division(double firstNumb, double secondNumb) {
-        if(secondNumb==0) throw new ArithmeticException();
-        return (firstNumb/secondNumb);
-    }
+                } else if (listOperations.get(i).equals("-")) {
+                    resultation = subtraction(resultation, Double.parseDouble(listNumbers.get(i)), Double.parseDouble(listNumbers.get(i + 1)));
+                    listNumbers.set(i, resultation);
+                    listNumbers.remove(i + 1);
+                    listOperations.remove(i);
+                }
+                else i++;
+            }
+        }
+
+
 }
