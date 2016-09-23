@@ -15,7 +15,14 @@ public class Calculator {
              String resultation = "";
 
 
-             Calculate calculate = new Calculate();
+             Calculate calculate = new Calculate(); 
+             /* Making operations abstract is a good try
+                Yet, from professional development perspective we should think about future of the project
+                Let's count number of changes and number of components (files in our case) we should update to add new operation (x^y).
+                Please, think on what can be done to minimize changes (especially number of modified components).
+                Idealy we just extend, without modifications in previously written model. (Open/Close principle ).
+                -- AG
+             */
              while (!example.equals("exit"))  {
                  resultation+=example;
                  example=resultation;
