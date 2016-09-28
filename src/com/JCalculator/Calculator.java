@@ -17,11 +17,15 @@ public class Calculator {
         reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Enter example ");
         example = reader.readLine();
-        Calculate calculate = new Calculate();
+        CalculateResult calculate = new CalculateResult();
         try {
             while (!example.equals("exit")) {
 
                 calculate.result(resultation);
+                if (listNumbers.get(0).contains("--")) {
+
+                    listNumbers.set(0,listNumbers.get(0).substring(2,listNumbers.get(0).length()-1));
+                }
                 System.out.println("Resultat: " + listNumbers.get(0));
                 resultation = listNumbers.get(0);
                 listNumbers.remove(0);
@@ -29,9 +33,9 @@ public class Calculator {
 
             }
         } catch (NumberFormatException e) {
-            System.out.println("Error: data entry ");
+            System.out.println("Error: data entry "+e);
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("Error: data entry ");
+            System.out.println("Error: data entry "+e);
         } catch (ArithmeticException e) {
             System.out.println("Error: Divide by zero");
         }
