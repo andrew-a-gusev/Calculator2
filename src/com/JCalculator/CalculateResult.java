@@ -42,7 +42,7 @@ public class CalculateResult extends ExtendsMathFormul {
             out.append(c);
         }
         example = out.toString();
-
+        System.out.println(example);
         String[] result = example.split("(-|\\+|\\*|\\/)");
         if (singTestR > 0)
             result[0] = "-" + result[0];

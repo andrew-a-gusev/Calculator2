@@ -24,7 +24,7 @@ public class Calculator {
                 calculate.result(resultation);
                 if (listNumbers.get(0).contains("--")) {
 
-                    listNumbers.set(0,listNumbers.get(0).substring(2,listNumbers.get(0).length()-1));
+                    listNumbers.set(0,listNumbers.get(0).substring(2,listNumbers.get(0).length()));
                 }
                 System.out.println("Resultat: " + listNumbers.get(0));
                 resultation = listNumbers.get(0);
