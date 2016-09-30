@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 import static com.JCalculator.Calculator.*;
 
 public class CalculateResult extends ExtendsMathFormul {
-
+//there is a serious bug in the calculations, will soon fix
     public void result(String resultation) throws IOException {
         Pattern p = Pattern.compile("[0-9,+,-,*,/]+");
         Matcher m = p.matcher(example);
@@ -42,7 +42,6 @@ public class CalculateResult extends ExtendsMathFormul {
             out.append(c);
         }
         example = out.toString();
-        System.out.println(example);
         String[] result = example.split("(-|\\+|\\*|\\/)");
         if (singTestR > 0)
             result[0] = "-" + result[0];
