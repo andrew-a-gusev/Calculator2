@@ -28,4 +28,5 @@ public class MathFormula implements MathematicalOperations {
         resultation=Double.toString(firstNumb/secondNumb);
         return resultation;
     }
+
 }

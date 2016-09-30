@@ -31,7 +31,6 @@ public class Calculator {
                 listNumbers.remove(0);
                 example = reader.readLine();
 
-
             }
         } catch (NumberFormatException e) {
             System.out.println("Error: data entry "+e);
