@@ -22,20 +22,18 @@ public class Calculator {
             while (!example.equals("exit")) {
 
                 calculate.result(resultation);
-                if (listNumbers.get(0).contains("--")) {
+                if (resultation.contains("--")) {
 
-                    listNumbers.set(0,listNumbers.get(0).substring(2,listNumbers.get(0).length()));
+                    resultation = resultation.substring(2, resultation.length());
                 }
-                System.out.println("Resultat: " + listNumbers.get(0));
-                resultation = listNumbers.get(0);
-                listNumbers.remove(0);
+                System.out.println("Resultat: " + resultation);
                 example = reader.readLine();
 
             }
         } catch (NumberFormatException e) {
-            System.out.println("Error: data entry "+e);
+            System.out.println("Error: data entry " + e);
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("Error: data entry "+e);
+            System.out.println("Error: data entry " + e);
         } catch (ArithmeticException e) {
             System.out.println("Error: Divide by zero");
         }
