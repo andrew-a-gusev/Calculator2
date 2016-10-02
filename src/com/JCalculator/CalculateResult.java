@@ -9,13 +9,13 @@ import static com.JCalculator.Calculator.example;
 import static com.JCalculator.Calculator.listNumbers;
 import static com.JCalculator.Calculator.listOperations;
 
-public class CalculateResult extends ExtendsMathFormul {
+public class CalculateResult  {
     public void result(String resultation) throws IOException {
 
         listCreator(resultation);
-        operationsPreority();
+        new ExtendsMathFormul().operationsPreority();
         listNumbers.clear();
-        
+
     }
 
     void listCreator(String resultation) {
@@ -35,12 +35,7 @@ public class CalculateResult extends ExtendsMathFormul {
             if ((example.charAt(i) == '+' || example.charAt(i) == '-' || example.charAt(i) == '*' || example.charAt(i) == '/'))
                 listOperations.add(Character.toString(example.charAt(i)));
         }
-        /*Parsing operators(coming soon)
-String[] test=example.split("[0-9,.]+");
-        for (int i = 0; i <test.length ; i++) {
-            System.out.println(test[i]);
-        }
-*/
+
         for (int i = 0; i < listOperations.size() - 1; i++) {
             if ((listOperations.get(i).equals("/") && listOperations.get(i + 1).equals("-")) || (listOperations.get(i).equals("*") && listOperations.get(i + 1).equals("-"))) {
                 singList.add(i + 2);
