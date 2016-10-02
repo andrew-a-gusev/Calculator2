@@ -1,10 +1,14 @@
 package com.JCalculator;
 
-import static com.JCalculator.Calculator.listNumbers;
-import static com.JCalculator.Calculator.listOperations;
+
+import java.util.ArrayList;
+
 import static com.JCalculator.Calculator.resultation;
 
 public class ExtendsMathFormul extends MathFormula {
+    OperatorsAndOperands operatorsAndOperands = new OperatorsAndOperands(resultation);
+    ArrayList<String> listOperations = operatorsAndOperands.getOperators();
+    ArrayList<String> listNumbers = operatorsAndOperands.getOperands();
 
     public void multiAndDivision() {
         for (int i = 0; i < listOperations.size(); ) {
