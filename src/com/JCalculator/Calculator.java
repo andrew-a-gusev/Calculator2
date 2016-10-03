@@ -20,8 +20,13 @@ public class Calculator {
             while (!example.equals("exit")) {
 
                 calculate.result(resultation);
-                if (resultation.contains("--")) {
-
+                if (resultation.contains("--")) { 
+/**
+ * 1. This trick makes it absolutelly unclear of how to feed calculator with values.
+ *    While tricks are acceptable somethimes, we should avoid it if we can, as future support of such code is expensive
+ * 2. Now we have a HARD dependency between two classes, say I want to re-use CalculateResult in my new project, 
+  *   how can I do it without having access to its source code ?
+ */
                     resultation = resultation.substring(2, resultation.length());
                 }
                 System.out.println("Resultat: " + resultation);
